@@ -29,7 +29,7 @@ import { supabase, MONTHS_EN, MONTHS_BN } from '../lib/supabase';
 import { useSettings } from '../contexts/SettingsContext';
 
 export default function MeterHistory() {
-  const { t } = useSettings();
+  const { t, settings } = useSettings();
   const [readings, setReadings] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -59,7 +59,7 @@ export default function MeterHistory() {
       flat?.tenants?.[0]?.full_name?.toLowerCase().includes(s);
   });
 
-  const MONTHS = t('বাংলা', 'en') === 'en' ? MONTHS_EN : MONTHS_BN;
+  const MONTHS = settings?.default_language === 'en' ? MONTHS_EN : MONTHS_BN;
 
   return (
     <Box>
@@ -155,7 +155,7 @@ export default function MeterHistory() {
                       {new Date(r.created_at).toLocaleDateString('en-BD', { day: '2-digit', month: 'short', year: 'numeric' })}
                     </TableCell>
                     <TableCell>
-                      <Typography variant="caption">{MONTHS_EN[r.month - 1]}</Typography>
+                      <Typography variant="caption">{MONTHS[r.month - 1]}</Typography>
                     </TableCell>
                     <TableCell>
                       <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.75 }}>

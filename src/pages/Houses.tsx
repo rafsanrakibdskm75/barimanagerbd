@@ -43,7 +43,6 @@ const emptyForm = {
 export default function Houses() {
   const { settings, t } = useSettings();
   const animations = settings?.animations_enabled !== false;
-  const isEn = settings?.default_language === 'en';
   const [houses, setHouses] = useState<House[]>([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);

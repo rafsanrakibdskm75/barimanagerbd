@@ -27,7 +27,7 @@ const TABLES = [
   'app_settings',
 ] as const;
 
-type CacheTable = typeof TABLES[number];
+// CacheTable type removed (unused) to satisfy TypeScript no-unused declarations
 
 /** Returns true if the browser reports an active network connection */
 export function isOnline(): boolean {

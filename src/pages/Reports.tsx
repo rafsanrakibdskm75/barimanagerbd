@@ -55,12 +55,12 @@ export default function Reports() {
     const allMeter = meterRes.data ?? [];
 
     // Monthly bar chart data
-    const monthly = MONTHS_EN.map((m, i) => {
+    const monthly = MONTHS.map((m, i) => {
       const month = i + 1;
       const monthCols = allCollections.filter(c => c.month === month);
       const monthMeter = allMeter.filter(r => r.month === month);
       return {
-        month: (isEn ? MONTHS_EN[i] : MONTHS_BN[i]).slice(0, 3),
+        month: m.slice(0, 3),
         collected: monthCols.filter(c => c.payment_status !== 'pending').reduce((s, c) => s + c.amount_paid, 0),
         pending: monthCols.filter(c => c.payment_status === 'pending').reduce((s, c) => s + c.total_payable, 0),
         electric: monthMeter.reduce((s, r) => s + r.total_bill, 0),

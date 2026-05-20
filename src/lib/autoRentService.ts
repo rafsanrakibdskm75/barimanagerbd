@@ -7,17 +7,24 @@ import { supabase } from './supabase';
 export async function runAutoMonthlyRentGeneration() {
   try {
     // 1. Fetch settings from app_settings
-    const { data: settings, error: settingsErr } = await supabase
+    const { data: settingsData, error: settingsErr } = await supabase
       .from('app_settings')
       .select('*')
       .maybeSingle();
 
-    if (settingsErr || !settings) {
-      console.log('Auto Rent Service: Settings not found or error loading settings.');
-      return;
+    if (settingsErr || !settingsData) {
+      console.warn('Auto Rent Service: Settings not found or error loading settings. Using defaults.');
     }
 
-    // Check if auto rent generation is enabled
+    // Use settings from DB when available, otherwise fallback to safe defaults
+    const settings: any = settingsData ?? {
+      auto_bill_generate: false,
+      auto_carry_meter_reading: false,
+      auto_meter_calculation: false,
+      electricity_per_unit: null,
+    };
+
+    // If auto rent generation is disabled in settings (or by default), skip
     if (!settings.auto_bill_generate) {
       console.log('Auto Rent Service: Auto rent generation is disabled in settings.');
       return;

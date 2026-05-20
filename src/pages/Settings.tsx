@@ -44,7 +44,6 @@ import WifiIcon from '@mui/icons-material/Wifi';
 import AnimationIcon from '@mui/icons-material/Animation';
 import LanguageIcon from '@mui/icons-material/Language';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import HomeWorkIcon from '@mui/icons-material/HomeWork';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
@@ -323,7 +322,7 @@ export default function Settings() {
               <TextField
                 fullWidth size="small"
                 label={t('অ্যাপ সংস্করণ', 'App Version')}
-                value={localSettings.app_version ?? '1.0.0'}
+                value={localSettings.app_version ?? '1.0.1'}
                 disabled
               />
             </Grid>

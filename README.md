@@ -21,7 +21,7 @@
 
 # 🌟 About This Project
 
-**Bari Manager BD (বাড়ি ম্যানেজার BD)** is a premium, full-featured property management and automated rent collection system designed specifically for building owners and caretakers in Bangladesh. It simplifies the tedious monthly tasks of tracking house inventories, managing tenant profiles, calculating electricity meter units, collecting utility bills, and auditing payments.
+**Bari Manager BD (বাড়ি ম্যানেজার BD)**V1.0.1 **is a premium, full-featured property management and automated rent collection system designed specifically for building owners and caretakers in Bangladesh. It simplifies the tedious monthly tasks of tracking house inventories, managing tenant profiles, calculating electricity meter units, collecting utility bills, and auditing payments.
 
 - ⚛ **React & TypeScript Frontend** for reliable runtime performance.
 - ⚡ **Supabase Serverless Backend** handling authentication, REST APIs, and database migrations.
@@ -80,11 +80,11 @@ Responsive sidebar menu drawer and compact status cards designed for active prop
 
 <div align="center">
 
-<img height="180em" src="https://github-readme-stats.vercel.app/api?username=mdnahidul337&show_icons=true&theme=tokyonight"/>
+<img height="180em" src="https://github-readme-stats.vercel.app/api?username=rafsanrakibdskm75&show_icons=true&theme=tokyonight"/>
 
-<img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=mdnahidul337&theme=tokyonight"/>
+<img height="180em" src="https://github-readme-streak-stats.herokuapp.com/?user=rafsanrakibdskm75&theme=tokyonight"/>
 
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mdnahidul337&layout=compact&theme=tokyonight"/>
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=rafsanrakibdskm75&layout=compact&theme=tokyonight"/>
 
 </div>
 
@@ -96,7 +96,7 @@ Responsive sidebar menu drawer and compact status cards designed for active prop
 
 [![Telegram](https://img.shields.io/badge/Telegram-@mdnahidul33-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/mdnahidul33)
 
-[![GitHub](https://img.shields.io/badge/GitHub-mdnahidul337-181717?style=for-the-badge&logo=github)](https://github.com/mdnahidul337)
+[![GitHub](https://img.shields.io/badge/GitHub-rafsanrakibdskm75-181717?style=for-the-badge&logo=github)](https://github.com/rafsanrakibdskm75)
 
 </div>
 

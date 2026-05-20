@@ -59,7 +59,7 @@ function StatCard({
   color: string;
   onClick?: () => void;
 }) {
-  const { settings, t } = useSettings();
+  const { settings } = useSettings();
   const animations = settings?.animations_enabled !== false;
   const isEn = settings?.default_language === 'en';
 
