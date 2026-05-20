@@ -1,0 +1,155 @@
+ভাড়া সংগ্রহ auto create monthly due month start from Rent auto genarate hoba jodi data powa jay Tenant a preview month due then next month পরিশোধ করা  + hoba next month due সংগ্রহ রেকর্ড manuly kora dorkar ni auto create check dila month change hola Rent Collection hoba just user click পাওয়া গেছে done
+
+Better
+
+
+Advanced Auto Monthly Due System for “Bari Manager BD”
+
+Feature Name:
+“Smart Auto Rent Generation System”
+
+Main Goal:
+The app should automatically generate monthly rent dues for every occupied flat without manually creating collection records every month.
+
+How It Works:
+
+1. Auto Monthly Due Generation
+
+* At the beginning of every new month:
+
+  * System automatically creates a new rent due
+  * No manual entry required
+* Only for flats where:
+
+  * Tenant exists
+  * Flat status = Occupied
+
+2. Previous Due Carry Forward
+   If previous month rent is unpaid:
+
+* Previous due automatically carries into next month
+* New month rent gets added with old due
+
+Example:
+April Due = ৳5000 (Unpaid)
+May Rent = ৳5000+5000(yellow) 
+
+Total Due in May:
+৳10000
+
+3. Smart Due Preview
+   Each flat card should show:
+
+* Current Month Rent
+* Previous Due
+* Electricity Bill
+* Water Bill
+* Service Charge
+* Total Payable
+* Payment Status
+
+4. One-Click Collection
+   No manual record creation needed.
+
+User only clicks:
+“পাওয়া গেছে”
+
+Then system automatically:
+
+* Marks payment as collected
+* Saves date/time
+* Saves collector info
+* Changes status to Paid
+* Updates dashboard analytics
+* Creates history log automatically
+
+5. Auto Monthly Record System
+   Every month system auto-generates:
+
+* Rent Collection Entry
+* Meter Calculation Entry
+* Due History
+* Pending Status
+
+6. Smart Status Logic
+   If unpaid:
+
+* Status = Pending
+
+If partially paid:
+
+* Status = Partial
+
+If fully paid:
+
+* Status = “পাওয়া গেছে”
+
+7. Auto Month Change Detection
+   When month changes:
+
+* App automatically checks:
+
+  * Existing occupied flats
+  * Previous pending amounts
+* Then creates new month records automatically
+
+8. Auto Collection History
+   Every payment should automatically save:
+
+* Month
+* Amount
+* Collector
+* Payment method
+* Payment date
+* Remaining due
+
+9. Dashboard Auto Update
+   Dashboard automatically updates:
+
+* Monthly income
+* Pending amount
+* Paid flats
+* Unpaid flats
+* Total due
+
+10. Offline Support
+    Even without internet:
+
+* Monthly due auto generation still works
+* Data saves locally
+* Auto sync to server later
+
+11. Smart Toggle in Settings
+    Settings Option:
+    ☑ Enable Auto Monthly Rent Generation
+
+If enabled:
+
+* System auto creates dues monthly
+
+If disabled:
+
+* Admin creates manually
+
+12. Additional Smart Features
+
+* Auto rent generation on first app open of new month
+* Duplicate month prevention
+* Automatic month label:
+
+  * January 2026
+  * February 2026
+* Auto late fee support (optional future feature)
+
+UI Behavior:
+
+* Large “পাওয়া গেছে” button
+* Red card = Pending
+* Yellow card = Partial
+* Green card = Paid
+* Monthly tabs system
+* Flat-wise quick payment action
+
+
+
+autoRentService.ts:16 Auto Rent Service: Settings not found or error loading settings.
