@@ -182,6 +182,11 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
       localStorage.setItem('app_offline_mode', String(updates.offline_mode_enabled));
     // ─────────────────────────────────────────────────────────────────────
 
+    // If using local defaults (e.g. unauthenticated or database error), skip Supabase update
+    if (settings.id === 'local-defaults') {
+      return;
+    }
+
     // Strip id/updated_at from the updates payload (avoid PK conflicts)
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { id: _id, updated_at: _ua, ...safeUpdates } = updates as any;
