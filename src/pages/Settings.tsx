@@ -322,7 +322,7 @@ export default function Settings() {
               <TextField
                 fullWidth size="small"
                 label={t('অ্যাপ সংস্করণ', 'App Version')}
-                value={localSettings.app_version ?? '1.0.1'}
+                value={localSettings.app_version ?? '1.0.2'}
                 disabled
               />
             </Grid>
