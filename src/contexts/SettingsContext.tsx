@@ -60,6 +60,46 @@ interface SettingsContextType {
   t: (bn: string, en: string) => string;
 }
 
+const DEFAULT_SETTINGS: AppSettings = {
+  id: 'local-defaults',
+  app_name: 'Bari Manager BD',
+  default_language: 'bn',
+  theme_mode: 'light',
+  date_format: 'dd/MM/yyyy',
+  currency: '৳',
+  house_name: '',
+  default_monthly_rent: 0,
+  due_date: 5,
+  late_fee_percentage: 0,
+  auto_bill_generate: false,
+  auto_carry_meter_reading: false,
+  partial_payment_enabled: true,
+  electricity_per_unit: 7,
+  water_bill_amount: 0,
+  service_charge_amount: 0,
+  gas_bill_amount: 0,
+  auto_meter_calculation: true,
+  meter_warning_limit: 0,
+  pending_rent_reminder: true,
+  due_date_notification: true,
+  overdue_alert: true,
+  push_notification_enabled: true,
+  sound_vibration_enabled: true,
+  offline_mode_enabled: false,
+  auto_sync_enabled: true,
+  default_payment_method: 'cash',
+  auto_generate_receipt: true,
+  monthly_pdf_export: false,
+  excel_export: false,
+  auto_report_generate: false,
+  theme_color: '#1976d2',
+  card_style: 'elevated',
+  font_size: 'normal',
+  compact_mode: false,
+  animations_enabled: true,
+  app_version: 'v1.0.0',
+};
+
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
@@ -85,18 +125,37 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
 
   const loadSettings = async () => {
     setLoading(true);
-    const { data } = await supabase.from('app_settings').select('*').maybeSingle();
-    if (!data) {
-      const { data: newSettings } = await supabase
-        .from('app_settings')
-        .insert([{}])
-        .select()
-        .maybeSingle();
-      setSettings(newSettings as AppSettings);
-    } else {
-      setSettings(data as AppSettings);
+    try {
+      const { data, error } = await supabase.from('app_settings').select('*').maybeSingle();
+      if (error) {
+        console.warn('loadSettings: Error fetching app_settings. Using local defaults.', error);
+        setSettings(DEFAULT_SETTINGS);
+        return;
+      }
+
+      if (!data) {
+        // If settings row does not exist, attempt to insert one
+        const { data: newSettings, error: insertErr } = await supabase
+          .from('app_settings')
+          .insert([{}])
+          .select()
+          .maybeSingle();
+
+        if (insertErr) {
+          console.warn('loadSettings: Failed to insert default settings (likely unauthorized). Using local defaults.', insertErr.message);
+          setSettings(DEFAULT_SETTINGS);
+        } else {
+          setSettings((newSettings as AppSettings) || DEFAULT_SETTINGS);
+        }
+      } else {
+        setSettings(data as AppSettings);
+      }
+    } catch (err) {
+      console.error('loadSettings: Unhandled exception loading settings.', err);
+      setSettings(DEFAULT_SETTINGS);
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   const updateSettings = async (updates: Partial<AppSettings>) => {
