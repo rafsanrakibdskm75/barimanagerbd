@@ -37,25 +37,23 @@ export default function PremiumLoader({ fullScreen = false, message, height = 30
         opacity: 0.9,
       };
 
-
   return (
-    <Box sx={fullScreen ? {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      minHeight: '100vh',
-      bgcolor: settings?.theme_mode === 'dark' ? '#121212' : '#f8f9fa',
-      p: 3,
-    } : {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: height,
-      width: '100%',
-      p: 3,
-    }}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        p: 3,
+        ...(fullScreen ? {
+          minHeight: '100vh',
+          bgcolor: settings?.theme_mode === 'dark' ? '#121212' : '#f8f9fa',
+        } : {
+          height: height,
+          width: '100%',
+        })
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
